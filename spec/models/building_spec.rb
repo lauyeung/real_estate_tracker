@@ -14,6 +14,7 @@ describe Building do
   it { should_not have_valid(:postal_code).when('', nil) }
 
   it { should belong_to(:building_owner) }
+  it { should have_many(:tenants) }
 
   it 'should not have building owner if the owner is destroyed' do
     owner = FactoryGirl.create(:building_owner)

@@ -14,7 +14,6 @@ feature 'user records a building owner', %Q{
 # * If I specify the required information, the owner is recorded and
 #   I am redirected to enter another new owner
 
-
   scenario 'user specifies valid information' do
     first_name = 'Joe'
     last_name = 'Black'

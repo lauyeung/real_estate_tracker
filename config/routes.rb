@@ -1,4 +1,6 @@
 RealEstateTracker::Application.routes.draw do
+  resources :tenants
+
   resources :building_owners
 
   resources :buildings
