@@ -1,0 +1,39 @@
+<h1>Add a New Tenant</h1>
+
+<%- if @tenant.errors.size > 0 -%>
+  <ul class="errors">
+    <%- @tenant.errors.full_messages.each do |error| -%>
+      <li><%= error %></li>
+    <%- end -%>
+  </ul>
+<%- end -%>
+
+<%= form_for @tenant do |f| %>
+
+  <div>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+  </div>
+
+  <div>
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+  </div>
+
+  <div>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+
+  <div>
+    <%= f.label :building_id, "Building" %>
+    <%= f.collection_select :building_id,
+      Building.all, :id, :full_address, prompt: true %>
+  </div>
+
+  <div>
+    <%= f.submit 'Add tenant' %>
+  </div>
+<%- end -%>
+<br>
+<%= link_to 'Tenant List', tenants_path %>
