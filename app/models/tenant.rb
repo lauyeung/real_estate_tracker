@@ -8,5 +8,17 @@ class Tenant < ActiveRecord::Base
   validates_presence_of :email
   validates_presence_of :building
 
+  class << self
+
+    def sorted
+      if Tenant.count > 0
+        @sorted_tenants = Tenant.order(:first_name).order(:last_name)
+      else
+        @sorted_tenants = []
+      end
+    end
+
+  end
+
 
 end

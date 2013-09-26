@@ -14,6 +14,10 @@ class TenantsController < ApplicationController
     end
   end
 
+  def index
+    @tenants = Tenant.all.sorted
+  end
+
   protected
 
   def tenant_params

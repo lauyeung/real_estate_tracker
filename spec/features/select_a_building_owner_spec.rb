@@ -7,7 +7,7 @@ feature 'user associates a building with an owner', %Q{
 } do
 
 # Acceptance Criteria:
-
+#
 # * When recording a building, I want to optionally associate the building with its rightful owner.
 # * If I delete an owner, the owner and its primary key should no longer be associated with any properties.
 
