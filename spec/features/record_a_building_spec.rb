@@ -49,5 +49,4 @@ feature 'user records a building', %Q{
     expect(Building.count).to eql(prev_count)
   end
 
-
 end
