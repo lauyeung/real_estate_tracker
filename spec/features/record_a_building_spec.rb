@@ -32,6 +32,8 @@ feature 'user records a building', %Q{
     fill_in 'Postal code', with: postal_code
     fill_in 'Description', with: description
 
+    click_button 'Record'
+
     expect(page).to have_content('Building recorded.')
     expect(Building.count).to eql(prev_count + 1)
   end
