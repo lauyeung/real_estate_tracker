@@ -25,7 +25,7 @@ feature 'user records a building', %Q{
     description = 'Awesome building'
 
     prev_count = Building.count
-    visit new_building_path
+    visit new_building_url
     fill_in 'Street address', with: street
     fill_in 'City', with: city
     select state, from: 'State'
@@ -35,11 +35,19 @@ feature 'user records a building', %Q{
     click_button 'Record'
 
     expect(page).to have_content('Building recorded.')
+    expect(page).to have_content('Add a New Building')
     expect(Building.count).to eql(prev_count + 1)
   end
 
 
-  scenario 'user does not specify valid information'
+  scenario 'user does not specify valid information' do
+    prev_count = Building.count
+    visit new_building_url
+    click_button 'Record'
+
+    expect(page).to have_content("can't be blank")
+    expect(Building.count).to eql(prev_count)
+  end
 
 
 end
