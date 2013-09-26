@@ -1,0 +1,47 @@
+<h1>Add a New Building</h1>
+
+<%- if @building.errors.size > 0 -%>
+  <ul class="errors">
+    <%- @building.errors.full_messages.each do |error| -%>
+      <li><%= error %></li>
+    <%- end -%>
+  </ul>
+<%- end -%>
+
+<%= form_for @building do |f| %>
+
+  <div>
+    <%= f.label :street_address %>
+    <%= f.text_field :street_address %>
+  </div>
+
+  <div>
+    <%= f.label :city %>
+    <%= f.text_field :city %>
+  </div>
+
+  <div>
+    <%= f.label :state %>
+    <%= f.collection_select :state, Building::STATES, :to_s, :to_s, include_blank: true %>
+  </div>
+
+  <div>
+    <%= f.label :postal_code %>
+    <%= f.text_field :postal_code %>
+  </div>
+
+  <div>
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+  </div>
+
+  <div>
+    <%= f.label :building_owner_id, "Building owner" %>
+    <%= f.collection_select :building_owner_id,
+      BuildingOwner.all, :id, :email, prompt: true %>
+  </div>
+
+  <div>
+    <%= f.submit 'Record' %>
+  </div>
+<%- end -%>

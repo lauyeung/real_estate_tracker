@@ -1,0 +1,36 @@
+<h1>Add a New Building Owner</h1>
+
+<%- if @building_owner.errors.size > 0 -%>
+  <ul class="errors">
+    <%- @building_owner.errors.full_messages.each do |error| -%>
+      <li><%= error %></li>
+    <%- end -%>
+  </ul>
+<%- end -%>
+
+<%= form_for @building_owner do |f| %>
+
+  <div>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+  </div>
+
+  <div>
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+  </div>
+
+  <div>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+
+  <div>
+    <%= f.label :company_name %>
+    <%= f.text_field :company_name %>
+  </div>
+
+  <div>
+    <%= f.submit 'Record' %>
+  </div>
+<%- end -%>
