@@ -36,6 +36,12 @@
   </div>
 
   <div>
+    <%= f.label :building_owner_id, "Building owner" %>
+    <%= f.collection_select :building_owner_id,
+      BuildingOwner.all, :id, :email, prompt: true %>
+  </div>
+
+  <div>
     <%= f.submit 'Record' %>
   </div>
 <%- end -%>

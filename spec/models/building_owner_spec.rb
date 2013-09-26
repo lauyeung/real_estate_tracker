@@ -9,4 +9,6 @@ describe BuildingOwner do
 
   it { should have_valid(:email).when('test@email.com', 'danger@hotmail.com')}
   it { should_not have_valid(:email).when('', nil) }
+
+  it { should have_many(:buildings) }
 end
