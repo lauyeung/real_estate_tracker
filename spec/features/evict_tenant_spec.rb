@@ -14,11 +14,13 @@ feature 'user evicts tenants', %Q{
 
   scenario 'removes tenant' do
     FactoryGirl.create(:tenant)
+    prev_count = Tenant.count
 
     visit tenants_url
 
     click_link 'Evict'
     expect(page).to have_content('Tenant evicted.')
+    expect(Tenant.count).to eql(prev_count - 1)
   end
 
 end
