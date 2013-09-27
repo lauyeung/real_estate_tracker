@@ -18,6 +18,14 @@ class TenantsController < ApplicationController
     @tenants = Tenant.all.sorted
   end
 
+  def destroy
+    @tenant = Tenant.find(params[:id])
+    if @tenant.present?
+      @tenant.destroy
+    end
+    redirect_to tenants_url
+  end
+
   protected
 
   def tenant_params
