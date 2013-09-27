@@ -22,8 +22,8 @@ class TenantsController < ApplicationController
     @tenant = Tenant.find(params[:id])
     if @tenant.present?
       @tenant.destroy
+      redirect_to tenants_path, notice: 'Tenant evicted.'
     end
-    redirect_to tenants_url
   end
 
   protected
